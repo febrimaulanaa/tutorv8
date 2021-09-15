@@ -23,7 +23,9 @@ class SettuwebController extends Controller
 
     public function index(Request $request)
     {
-        return view('formupload.setelahtuweb.settuweb');
+        $getAllMtk = DB::select('select kode_mtk,nama_mtk_singkat from m_mata_kuliah');
+        $masas = DB::SELECT('select * from masas');
+        return view('formupload.setelahtuweb.settuweb', compact('getAllMtk', 'masas'));
     }
 
     public function upload_settuweb(Request $request)
@@ -61,6 +63,8 @@ class SettuwebController extends Controller
 
         $data = [
             "nama" => Auth::user()->name,
+            "kdmtk" => $request->kdmtk,
+            "masa" => $request->masa,
             "rekap" => $request->rekap,
             "kompetensi" => $request->kompetensi,
             "rat" => $request->rat,
@@ -135,7 +139,7 @@ class SettuwebController extends Controller
 
         $nama = $data['nama'];
 
-        unset($data['id'], $data['nama'], $data['created_at'], $data['updated_at']);
+        unset($data['id'], $data['nama'], $data['masa'], $data['kdmtk'], $data['created_at'], $data['updated_at']);
 
         foreach ($data as $index => $val) {
             if ($val === "") {

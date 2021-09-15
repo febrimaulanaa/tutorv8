@@ -11,6 +11,8 @@ class UploadSettuweb extends Model
     public $timestamps = false;
     protected $fillable = [
         'nama',
+        'kdmtk',
+        'masa',
         'rekap',
         'kompetensi',
         'rat',

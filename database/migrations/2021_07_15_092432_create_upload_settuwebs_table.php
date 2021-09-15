@@ -16,6 +16,8 @@ class CreateUploadSettuwebsTable extends Migration
         Schema::create('upload_settuwebs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
+            $table->string('kdmtk');
+            $table->string('masa');
             $table->string('rekap');
             $table->string('kompetensi');
             $table->string('rat');

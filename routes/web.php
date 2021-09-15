@@ -37,6 +37,10 @@ Route::group(['middleware' => ['auth']], function () {
         //create user
         Route::get('/createusers', [AdminController::class, 'create'])->name('createuser');
         Route::post('/user', [AdminController::class, 'storeusers'])->name('user');
+        Route::get('/datauser', [AdminController::class, 'datauser'])->name('datauser');
+        Route::get('/masaujian', [AdminController::class, 'masa'])->name('masaujian');
+        Route::post('/tambahmasa', [AdminController::class, 'tambahmasa'])->name('tambahmasa');
+        Route::delete('/delete/{masa}', [AdminController::class, 'delete'])->name('hapusmasa');
     });
 
     Route::group(['middleware' => 'role:Member', 'prefix' => 'member', 'as' => 'member.'], function () {
